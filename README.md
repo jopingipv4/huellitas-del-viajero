@@ -1,4 +1,4 @@
-# Huellitas del Viajero
+<img width="383" height="786" alt="01-inicio" src="https://github.com/user-attachments/assets/5fe9dbd7-4c0f-4e67-be60-aa920dcab644" /># Huellitas del Viajero
 
 Proyecto académico de aplicación Android orientada a conectar a personas interesadas en conocer, apadrinar o ayudar a perros en situación vulnerable. Esta versión es un prototipo de demostración: no publica casos reales ni recibe solicitudes de ayuda.
 
@@ -25,6 +25,25 @@ La aplicación ya se compiló, instaló y ejecutó en un emulador Pixel 7. En la
 - **Reportar caso:** incluye campos para la descripción y una ubicación de referencia, además del botón «Guardar reporte». Los datos no se envían a internet ni se conservan de forma permanente.
 
 El objetivo de esta etapa fue pasar de una idea representada en un wireframe a una aplicación Android navegable. Los nombres y datos de los perritos son ficticios; no corresponden a animales disponibles para adopción.
+
+### Evidencias de ejecución
+
+Las siguientes capturas muestran el prototipo ejecutado en el emulador Pixel 7.
+Corresponden a una demostración académica con datos ficticios.
+
+![Pantalla de inicio del prototipo Android](evidencias/modulo-5/01-inicio.png)
+
+*Figura 2. Pantalla de inicio del prototipo Android.*
+
+![Lista de perritos del prototipo](evidencias/modulo-5/02-lista-perritos.png)
+
+*Figura 3. Lista de perfiles ficticios.*
+
+![Pantalla informativa de apadrinamiento](evidencias/modulo-5/05-apadrinamiento.png)
+
+*Figura 4. Pantalla informativa de apadrinamiento.*
+
+[Ver todas las evidencias del Módulo 5](evidencias/modulo-5/)
 
 ## Estado y limitaciones
 
