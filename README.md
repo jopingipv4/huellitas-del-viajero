@@ -39,7 +39,7 @@ Corresponden a una demostración académica con datos ficticios.
 
 *Figura 3. Lista de perfiles ficticios.*
 
-![Pantalla informativa de apadrinamiento](evidencias/modulo-5/05-apadrinamiento.png)
+![Pantalla informativa de apadrinamiento](evidencias/modulo-5/05-apadrinar.png)
 
 *Figura 4. Pantalla informativa de apadrinamiento.*
 
