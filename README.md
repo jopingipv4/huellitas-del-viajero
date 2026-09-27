@@ -1,4 +1,4 @@
-<img width="383" height="786" alt="01-inicio" src="https://github.com/user-attachments/assets/5fe9dbd7-4c0f-4e67-be60-aa920dcab644" /># Huellitas del Viajero
+# Huellitas del Viajero
 
 Proyecto académico de aplicación Android orientada a conectar a personas interesadas en conocer, apadrinar o ayudar a perros en situación vulnerable. Esta versión es un prototipo de demostración: no publica casos reales ni recibe solicitudes de ayuda.
 
