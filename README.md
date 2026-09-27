@@ -60,3 +60,20 @@ No hay una base de datos local o remota conectada para mantener reportes entre s
 ## Cómo revisar el prototipo
 
 El proyecto Android se desarrolló en Android Studio. Una vez publicado su código en este repositorio, abra la carpeta del proyecto en Android Studio, espere la sincronización de Gradle, seleccione un emulador Android y ejecute la configuración `app`. El entorno usado durante el avance del Módulo 5 fue un Pixel 7 virtual.
+
+## Registro de cambios
+
+### Avances anteriores
+- Elaboré el borrador del proyecto y definí el propósito de Huellitas del Viajero.
+- Diseñé el wireframe de la pantalla principal y documenté la propuesta.
+
+### Avance actual — módulo 5
+- Incorporé al repositorio el proyecto Android desarrollado en Kotlin y Jetpack Compose.
+- Implementé y probé en el emulador las pantallas disponibles del prototipo.
+- Agregué capturas de la ejecución en `evidencias/modulo-5/`.
+- Esta versión es una demostración académica; no procesa solicitudes ni pagos reales.
+
+### Próximos avances
+- Revisar la navegación y corregir los problemas detectados en las pruebas.
+- Mejorar la presentación y documentar las funciones que se completen.
+- Preparar la versión final para el módulo 8.
