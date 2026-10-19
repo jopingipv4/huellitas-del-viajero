@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun DemoBadge(
-    text: String = "DATOS DE DEMOSTRACIÓN - M5 (Información ficticia sin procesamiento real)"
+    text: String = "PROTOTIPO M8 — Datos ficticios para pruebas académicas. Sin rescates ni transacciones reales."
 ) {
     Card(
         colors = CardDefaults.cardColors(

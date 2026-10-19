@@ -22,77 +22,56 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.jopingipv4.huellitasdelviajero.model.ReportValidation
 import com.jopingipv4.huellitasdelviajero.ui.components.DemoBadge
 
 @Composable
 fun ReportCaseScreen(
-    onBackToHome: () -> Unit
+    onBackToHome: () -> Unit,
+    onSaveReport: (String, String) -> Boolean
 ) {
-    var description by remember { mutableStateOf("") }
-    var location by remember { mutableStateOf("") }
+    var description by rememberSaveable { mutableStateOf("") }
+    var location by rememberSaveable { mutableStateOf("") }
+    var descriptionError by rememberSaveable { mutableStateOf<String?>(null) }
+    var locationError by rememberSaveable { mutableStateOf<String?>(null) }
+    var showSavedDialog by rememberSaveable { mutableStateOf(false) }
+    var savingError by rememberSaveable { mutableStateOf(false) }
 
-    var descriptionError by remember { mutableStateOf<String?>(null) }
-    var locationError by remember { mutableStateOf<String?>(null) }
-
-    var lastReportSubmitted by remember { mutableStateOf<Pair<String, String>?>(null) }
-    var showConfirmationDialog by remember { mutableStateOf(false) }
-
-    fun validateAndSubmit() {
-        var isValid = true
-
-        if (description.trim().isEmpty()) {
-            descriptionError = "La descripción no puede estar vacía"
-            isValid = false
-        } else {
-            descriptionError = null
-        }
-
-        if (location.trim().isEmpty()) {
-            locationError = "La ubicación de referencia no puede estar vacía"
-            isValid = false
-        } else {
-            locationError = null
-        }
-
-        if (isValid) {
-            lastReportSubmitted = Pair(description.trim(), location.trim())
-            showConfirmationDialog = true
+    fun validateAndSave() {
+        descriptionError = ReportValidation.descriptionError(description)
+        locationError = ReportValidation.locationError(location)
+        if (descriptionError == null && locationError == null) {
+            if (onSaveReport(description, location)) {
+                showSavedDialog = true
+                savingError = false
+            } else {
+                savingError = true
+            }
         }
     }
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-            .verticalScroll(rememberScrollState())
+        modifier = Modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState())
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 8.dp),
+            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = "Reportar Caso",
-                style = MaterialTheme.typography.titleLarge,
-                fontWeight = FontWeight.Bold
-            )
-            OutlinedButton(onClick = onBackToHome) {
-                Text("Volver")
-            }
+            Text("Reportar caso", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+            OutlinedButton(onClick = onBackToHome) { Text("Volver") }
         }
 
-        DemoBadge("DEMOSTRACIÓN M5 - Los datos ingresados no se envían a internet ni se guardan permanentemente.")
+        DemoBadge("DEMOSTRACIÓN M8 — Usa únicamente datos inventados. El reporte se guarda en este dispositivo, NO se envía a una organización.")
 
         Text(
-            text = "Ingresa los detalles del perrito que necesita ayuda:",
+            "Describe un caso ficticio para probar la validación y el almacenamiento local.",
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.padding(bottom = 12.dp)
         )
@@ -101,105 +80,71 @@ fun ReportCaseScreen(
             value = description,
             onValueChange = {
                 description = it
-                if (it.trim().isNotEmpty()) descriptionError = null
+                descriptionError = null
+                savingError = false
             },
             label = { Text("Descripción del caso") },
-            placeholder = { Text("Ej: Perrito mestizo pequeño con pata herida, requiere atención.") },
+            placeholder = { Text("Ej.: Perrito mestizo pequeño que necesita ayuda.") },
             isError = descriptionError != null,
             supportingText = {
-                descriptionError?.let {
-                    Text(text = it, color = MaterialTheme.colorScheme.error)
-                }
+                descriptionError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
             },
             minLines = 3,
             maxLines = 5,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 8.dp)
+            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
         )
 
         OutlinedTextField(
             value = location,
             onValueChange = {
                 location = it
-                if (it.trim().isNotEmpty()) locationError = null
+                locationError = null
+                savingError = false
             },
-            label = { Text("Ubicación de referencia") },
-            placeholder = { Text("Ej: Esquina de la Av. Principal con Calle 5, cerca del parque.") },
+            label = { Text("Ubicación ficticia de referencia") },
+            placeholder = { Text("Ej.: Parque central, zona de prueba.") },
             isError = locationError != null,
             supportingText = {
-                locationError?.let {
-                    Text(text = it, color = MaterialTheme.colorScheme.error)
-                }
+                locationError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
             },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 16.dp)
+            modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp)
         )
 
-        Button(
-            onClick = { validateAndSubmit() },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text("Guardar reporte")
+        Button(onClick = ::validateAndSave, modifier = Modifier.fillMaxWidth()) {
+            Text("Guardar reporte de prueba")
         }
 
-        lastReportSubmitted?.let { (desc, loc) ->
-            Spacer(modifier = Modifier.height(20.dp))
+        if (savingError) {
+            Spacer(modifier = Modifier.height(12.dp))
             Card(
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.secondaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-                ),
-                modifier = Modifier.fillMaxWidth()
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.errorContainer)
             ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Text(
-                        text = "Último reporte validado en esta sesión:",
-                        style = MaterialTheme.typography.titleSmall,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = "• Descripción: $desc",
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                    Text(
-                        text = "• Ubicación: $loc",
-                        style = MaterialTheme.typography.bodySmall
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = "⚠️ Nota: Este reporte es temporal y no se ha guardado en ninguna base de datos ni servidor.",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.primary
-                    )
-                }
+                Text(
+                    "No se pudo guardar el reporte en este dispositivo. Inténtalo nuevamente.",
+                    modifier = Modifier.padding(12.dp)
+                )
             }
         }
 
-        if (showConfirmationDialog) {
+        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            "Los reportes de prueba pueden consultarse en el panel administrativo de demostración. Permanecen en este dispositivo hasta que se borren los datos de la aplicación o se desinstale.",
+            style = MaterialTheme.typography.bodySmall
+        )
+
+        if (showSavedDialog) {
             AlertDialog(
-                onDismissRequest = { showConfirmationDialog = false },
-                title = { Text("¡Reporte Registrado!") },
+                onDismissRequest = { showSavedDialog = false },
+                title = { Text("Reporte de prueba guardado") },
                 text = {
-                    Text("El reporte ha sido validado correctamente para esta sesión de demostración.\n\nRecuerda que por ahora NO se envía información a internet ni a servidores.")
+                    Text("El registro se guardó localmente para este prototipo. No se envió a internet ni a una organización de rescate.")
                 },
                 confirmButton = {
-                    TextButton(
-                        onClick = {
-                            showConfirmationDialog = false
-                            description = ""
-                            location = ""
-                        }
-                    ) {
-                        Text("Aceptar y limpiar formulario")
-                    }
-                },
-                dismissButton = {
-                    TextButton(onClick = { showConfirmationDialog = false }) {
-                        Text("Cerrar")
-                    }
+                    TextButton(onClick = {
+                        showSavedDialog = false
+                        description = ""
+                        location = ""
+                    }) { Text("Aceptar y limpiar") }
                 }
             )
         }

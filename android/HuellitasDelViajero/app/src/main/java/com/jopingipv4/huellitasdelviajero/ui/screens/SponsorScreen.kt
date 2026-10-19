@@ -58,7 +58,7 @@ fun SponsorScreen(
             }
         }
 
-        DemoBadge("DEMOSTRACIÓN M5 - No se procesan solicitudes ni pagos reales.")
+        DemoBadge("DEMOSTRACIÓN M8 - No se procesan solicitudes ni pagos reales.")
 
         Card(
             modifier = Modifier
@@ -117,7 +117,7 @@ fun SponsorScreen(
         if (showDialog) {
             AlertDialog(
                 onDismissRequest = { showDialog = false },
-                title = { Text("Aviso de Demostración (M5)") },
+                title = { Text("Aviso de Demostración (M8)") },
                 text = {
                     Text("Esta función es demostrativa. Actualmente no se procesan solicitudes de apadrinamiento ni transacciones reales. Próximamente se integrará el sistema de apadrinamiento completo.")
                 },

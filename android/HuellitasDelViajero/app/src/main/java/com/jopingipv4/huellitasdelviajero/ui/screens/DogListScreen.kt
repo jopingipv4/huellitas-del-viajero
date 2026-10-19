@@ -53,7 +53,7 @@ fun DogListScreen(
             }
         }
 
-        DemoBadge("DEMOSTRACIÓN M5 - Lista de 3 perritos con datos ficticios.")
+        DemoBadge("DEMOSTRACIÓN M8 - Lista de 3 perritos con datos ficticios.")
 
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(12.dp)

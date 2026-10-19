@@ -56,7 +56,7 @@ fun DogDetailScreen(
             }
         }
 
-        DemoBadge("DEMOSTRACIÓN M5 - Ficha técnica con información de muestra.")
+        DemoBadge("DEMOSTRACIÓN M8 - Ficha técnica con información de muestra.")
 
         Card(
             modifier = Modifier.fillMaxWidth(),

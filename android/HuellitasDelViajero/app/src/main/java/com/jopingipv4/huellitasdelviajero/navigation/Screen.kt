@@ -6,4 +6,5 @@ sealed interface Screen {
     data class DogDetail(val dogId: String) : Screen
     data object Sponsor : Screen
     data object ReportCase : Screen
+    data object AdminReports : Screen
 }

@@ -23,7 +23,8 @@ import com.jopingipv4.huellitasdelviajero.ui.components.DemoBadge
 fun HomeScreen(
     onNavigateToDogs: () -> Unit,
     onNavigateToSponsor: () -> Unit,
-    onNavigateToReport: () -> Unit
+    onNavigateToReport: () -> Unit,
+    onNavigateToAdmin: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -93,6 +94,19 @@ fun HomeScreen(
             title = "📢 Reportar caso",
             description = "Registra información y ubicación de perritos que necesiten ayuda.",
             onClick = onNavigateToReport
+        )
+
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = "Herramientas del prototipo",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(vertical = 8.dp)
+        )
+        OptionCard(
+            title = "🛠 Panel administrativo (Demo)",
+            description = "Consulta los reportes de prueba almacenados localmente y cambia su estado. Sin acceso protegido ni gestión real.",
+            onClick = onNavigateToAdmin
         )
     }
 }
