@@ -87,18 +87,29 @@ Consulta [`CHANGELOG.md`](CHANGELOG.md) y [`PRUEBAS_M8.md`](PRUEBAS_M8.md). Los 
 
 ## 9. Entregables y enlaces
 
-- **README:** archivo actual [`README.md`](README.md).
-- **Borrador del informe:** [`documentos/M8_borrador_informe.md`](documentos/M8_borrador_informe.md).
-- **Informe Word:** [`documentos/JohanTellez_COM437_M8_Informe_Final.docx`](documentos/JohanTellez_COM437_M8_Informe_Final.docx).
-- **Registro de cambios:** [`CHANGELOG.md`](CHANGELOG.md).
-- **Guía de exposición y presentación:** [`presentacion/`](presentacion/), si se incluye en la entrega GitHub.
-- **Repositorio:** https://github.com/jopingipv4/huellitas-del-viajero
+Los nombres de los documentos se actualizaron para la entrega académica. Los enlaces relativos de esta sección funcionarán cuando los archivos se copien a las carpetas indicadas y se publique el commit en GitHub.
 
-**Enlaces directos cuando se publique el commit en `main`:**  
+| Entregable | Archivo | Ubicación prevista |
+|---|---|---|
+| Actividad anterior (referencia M5) | `M5 Actividad - Johan Dario Tellez Bonilla.docx` | Documento histórico; si se incluye en el repositorio, guardarlo en `documentos/` |
+| Informe final (M8) | [`M8 Entrega final de la aplicación de Android - Johan Tellez.docx`](documentos/M8%20Entrega%20final%20de%20la%20aplicaci%C3%B3n%20de%20Android%20-%20Johan%20Tellez.docx) | `documentos/` |
+| Presentación (M8) | [`M8 Presentacion Huellitas del Viajero - Johan Tellez.pptx`](presentacion/M8%20Presentacion%20Huellitas%20del%20Viajero%20-%20Johan%20Tellez.pptx) | `presentacion/` |
+| Video de exposición (M8) | `M8 Presentacion Huellitas del Viajero - Johan Tellez.mp4` | Se conservará por separado hasta disponer de un enlace público o compartido |
+| Borrador de informe | [`M8_borrador_informe.md`](documentos/M8_borrador_informe.md) | `documentos/` |
+| README | [`README.md`](README.md) | Raíz del repositorio |
+| Registro de cambios | [`CHANGELOG.md`](CHANGELOG.md) | Raíz del repositorio |
+| Pruebas funcionales | [`PRUEBAS_M8.md`](PRUEBAS_M8.md) | Raíz del repositorio |
+| Índice de entrega tipo wiki | [`M8_entrega_tipo_wiki.md`](documentos/M8_entrega_tipo_wiki.md) | `documentos/` |
+
+**Nota sobre el video:** el archivo MP4 pesa alrededor de 121 MiB, por encima del límite de 100 MiB de GitHub para Git convencional. Por ahora no se incluye un enlace que aún no existe. Puede compartirse mediante GitHub Releases, un servicio de archivos o un video no listado, y agregar aquí su enlace una vez publicado.
+
+**Repositorio:** https://github.com/jopingipv4/huellitas-del-viajero
+
+**Enlaces directos:**  
 README: https://github.com/jopingipv4/huellitas-del-viajero/blob/main/README.md  
 Borrador: https://github.com/jopingipv4/huellitas-del-viajero/blob/main/documentos/M8_borrador_informe.md
 
-> Estos enlaces **no se consideran actualizados hasta subir los archivos**. No se ha realizado aquí ninguna publicación en GitHub. GitHub Classroom fue descontinuado el 28 de agosto de 2026, por lo cual el proyecto se presenta en el repositorio personal y se solicita al profesor la modalidad equivalente de entrega tipo wiki: https://github.blog/changelog/2026-08-27-github-classroom-deprecated/.
+> GitHub Classroom fue descontinuado el 28 de agosto de 2026; se utiliza este repositorio personal con un índice tipo wiki como alternativa documental, sujeto a las instrucciones de entrega del profesor: https://github.blog/changelog/2026-08-27-github-classroom-deprecated/.
 
 ## 10. Alcance y próximos pasos
 
